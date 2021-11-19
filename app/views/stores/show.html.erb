@@ -1,0 +1,45 @@
+
+<%= flash_messages %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @store.description %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @store.color %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @store.price %>
+</p>
+
+<p>
+  <strong>Theme:</strong>
+  <%= @store.theme %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @store.material %>
+</p>
+
+<p>
+  <strong>Design:</strong>
+  <%= @store.design %>
+</p>
+
+<p>
+  <strong>Netweight:</strong>
+  <%= @store.netWeight %>
+</p>
+
+<%= link_to 'Edit', edit_store_path(@store), class: "btn btn-warning" %> |
+<%= link_to 'Back', stores_path, class: "btn btn-default" %>

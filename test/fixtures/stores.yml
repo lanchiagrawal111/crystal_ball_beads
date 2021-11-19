@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  color: MyString
+  price: 1.5
+  theme: MyString
+  material: MyString
+  design: MyString
+  netWeight: 1.5
+
+two:
+  name: MyString
+  description: MyText
+  color: MyString
+  price: 1.5
+  theme: MyString
+  material: MyString
+  design: MyString
+  netWeight: 1.5
