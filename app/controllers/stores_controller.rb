@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
     before_action :set_store, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, except: [:index, :show]
-  
+    before_action :admin_logged_in?
+
     def index
       #@products = Product.all
       @stores    = Store.all 
@@ -20,24 +20,43 @@ class StoresController < ApplicationController
   
     def create
       @store = Store.new(store_params)
-      if @store.save
-        redirect_to @store, notice: 'Store was successfully created.'
-      else
-        render :new
-      end
+
+        respond_to do |format|
+        if @store.save
+          format.html { redirect_to @store, notice: "Store was successfully created." }
+          format.json { render :show, status: :created, location: @store }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @store.errors, status: :unprocessable_entity }
+        end
+        end  
     end
   
     def update
-      if @store.update(store_params)
-        redirect_to @store, notice: 'Store was successfully updated.'
-      else
-        render :edit
+      respond_to do |format|
+        if @store.update(store_params)
+          format.html { redirect_to @store, notice: "Store was successfully updated." }
+          format.json { render :show, status: :ok, location: @store }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @store.errors, status: :unprocessable_entity }
+        end
       end
     end
   
     def destroy
       @store.destroy
-      redirect_to stores_url, notice: 'Store was successfully destroyed.'
+      respond_to do |format|
+        format.html { redirect_to stores_url, notice: "Store was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    end
+
+    def admin_logged_in?
+      if session[:admin].nil?
+        flash[:notice] = "You should login as an admin to continue"
+         redirect_to admin_login_path
+      end
     end
   
 

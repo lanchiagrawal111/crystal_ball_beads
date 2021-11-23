@@ -15,7 +15,11 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "responsive";
+ @import "style";
+ @import "superslides.css";
  
+
  #main-container {
    position: relative;
    padding-top: 50px;

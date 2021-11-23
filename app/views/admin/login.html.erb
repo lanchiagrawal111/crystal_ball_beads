@@ -1,0 +1,21 @@
+
+
+<%= flash_messages %>
+<h2>Admnin Area</h2>
+
+<%= form_with local: true do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Login"%>
+  </div>
+<% end %>
